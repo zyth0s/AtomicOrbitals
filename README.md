@@ -109,7 +109,7 @@ distance from the nucleus. Due to the nature of the orbitals the
 nuclear distances must be positive and non-zero.</p>
 
 ```python
-r = [1.5]
+r = 1.5
 d0, d1, g0, g1, t0, t1, l0, l1 = neon.get_densities(r)
 ```
 
