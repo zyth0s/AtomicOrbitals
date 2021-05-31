@@ -457,7 +457,7 @@ class Atom:
         """
         Returns RGB color of element for plotting.
         """
-        return COLOR_DICT[self.element]
+        return COLOR_DICT[self.element.upper()]
 
     def libxc_eval(self, r, functional='gga_x_pbe', restricted=False, density_threshold=None, sigma_threshold=None, nan_check=False):
         '''Evaluates a functional with the atomic density data using libxc'''
