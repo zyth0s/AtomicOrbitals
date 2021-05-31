@@ -97,7 +97,7 @@ HelFEM.</p>
 initialised with the desired atomic element symbol:</p>
 
 ```python 
-import Densities neon = Densities.Atom("Ne")
+import AtomicOrbitals neon = AtomicOrbitals.Atom("Ne")
 ```
 
 <p>Calling the initialised atom's <code>get_densities(r)</code> method
@@ -109,7 +109,7 @@ distance from the nucleus. Due to the nature of the orbitals the
 nuclear distances must be positive and non-zero.</p>
 
 ```python
-r = 1.5
+r = [1.5]
 d0, d1, g0, g1, t0, t1, l0, l1 = neon.get_densities(r)
 ```
 
@@ -118,7 +118,7 @@ array to take advantage of the massive speed up offered by the
 vectorised routines:</p>
 
 ```python
-r = np.linspace(0, 5, 500)
+r = np.linspace(0.0001, 5, 500)
 d0, d1, g0, g1, t0, t1, l0, l1 = neon.get_densities(r)
 ```
 
@@ -162,7 +162,7 @@ smaller number of points than a simple grid:</p>
 
 ```python
 grid_level = 100  # Defines the accuracy of the grid. 100 is typically sufficient.
-n, r, weights = Densities.GridGenerator.make_grid(grid_level)
+n, r, weights = AtomicOrbitals.GridGenerator.make_grid(grid_level)
 d0, d1, g0, g1, t0, t1, l0, l1 = neon.get_densities(r)
 density = np.sum(weights*(d0 + d1))
 print("Total Density: {:.6f}".format(density))
@@ -174,7 +174,7 @@ href="https://www.jfurness.uk/Publications/Furness2019.pdf">β
 iso-orbital indicator</a>:</p>
 
 ```python
-from Densities import Atom
+from AtomicOrbitals import Atom
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -205,8 +205,8 @@ plt.show()
 to the pretabulated values when the test set is run:</p>
 
 ```python
-import Densities
-Densities.test_densities()
+import AtomicOrbitals
+AtomicOrbitals.test_densities()
 ```
 
 <p>If the Python interface of libxc is available, the test will also
@@ -216,7 +216,7 @@ approximation.</p>
 <p>Alternatively running the module as main runs the test:</p>
 
 ```bash
-python Densities.py
+python AtomicOrbitals.py
 ```
 
 <p>The module also implements methods to get the Jmol coloring (roughly CPK colors) of the elements. This can be accessed by calling an Atom object's <code>get_color()</code> method, or by passing a list of element label strings or Atom objects to the <code>get_colors_for_elements()</code> function.</p>
